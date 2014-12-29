@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+   <sections>         
+		<catalog translate="label">
+			<groups>
+				<autocurrency translate="label" module="autocurrency">
+					<label>Auto Currency</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>10</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<enable_disable translate="label comment">
+							<label>Enable</label>
+							<comment>Enable/Disable extension</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</enable_disable>
+						<database_source translate="label comment">
+							<label>Database Source</label>
+							<comment></comment>
+							<frontend_type>select</frontend_type>							
+							<source_model>autocurrency/system_config_source_database</source_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</database_source>						
+					</fields>
+				</autocurrency>
+			</groups>						
+		</catalog>			
+    </sections>
+</config>
