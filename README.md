@@ -3,13 +3,15 @@ Auto Currency Switcher - Magento Extension
 
 Auto Currency extension tracks visitor's IP address and automatically changes the store currency to the visitor's location currency. Visitor can switch to his/her desired currency at any time.
 
-This extension uses two IP Address databases for IP Address lookup. One is MaxMind's GeoIP and the other is Webnet77's Ip2Country database. Shop admins have the option to choose between these two databases. The default one is Webnet77's Ip2Country database.
+This extension uses two IP Address databases for IP Address lookup. One is `MaxMind's GeoIP` and the other is `Webnet77's Ip2Country` database. Shop admins have the option to choose between these two databases. The default one is Webnet77's Ip2Country database.
 
 ## Installation ##
 
-Just install the module in your multi-currency Magento shop and the module will work on the fly. No extra configuration settings is to be made. 
+Just install the module in your multi-currency Magento shop and the module will work on the fly. 
 
-You can also Enable or Disable the module & choose IP address database from configuration setting:
+No extra configuration settings is to be made. 
+
+You can Enable or Disable the module & choose IP address database from configuration setting:
 
 `System -> Configuration -> Catalog -> Auto Currency`
 
@@ -21,4 +23,4 @@ This extension should run immediately after installing it. If it doesn't work th
 
 2) Sometimes the extension doesn't work due to browser cache. Please clear your browser cache and try reloading your website. Or, try opening your website in another browser.
 
-More details: [Magento Extension: Auto Currency Switcher](http://blog.chapagain.com.np/magento-extension-auto-currency-switcher-free/)
+**More details**: [Magento Extension: Auto Currency Switcher](http://blog.chapagain.com.np/magento-extension-auto-currency-switcher-free/)
