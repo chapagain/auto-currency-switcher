@@ -24,3 +24,13 @@ This extension should run immediately after installing it. If it doesn't work th
 2) Sometimes the extension doesn't work due to browser cache. Please clear your browser cache and try reloading your website. Or, try opening your website in another browser.
 
 **More details**: [Magento Extension: Auto Currency Switcher](http://blog.chapagain.com.np/magento-extension-auto-currency-switcher-free/)
+
+## Thanks ##
+
+* [MaxMind GeoIP Legacy database](http://dev.maxmind.com/geoip/legacy/geolite/)
+
+* [MaxMind GeoIP Legacy PHP API](https://github.com/maxmind/geoip-api-php)
+
+* [Webnet77 Ip2Country database](http://software77.net/geo-ip/)
+
+* [Mats Gefvert's Ip2Country PHP API](https://github.com/mgefvert/Ip2Country)
