@@ -13,7 +13,7 @@ No extra configuration settings is to be made.
 
 However, you have the option to `Enable or Disable` the module & `Choose IP address Database Source` from configuration setting:
 
-`System -> Configuration -> Catalog -> Auto Currency`
+`System -> Configuration -> CATALOG -> Catalog -> Auto Currency`
 
 By default, the module is enabled and the IP address database source is Ip2Country.
 
