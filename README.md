@@ -29,7 +29,29 @@ This extension should run immediately after installing it. If it doesn't work th
 
 4) If Compilation is enabled then Re-run Compilation (`System -> Tools -> Compilation`)
 
-**More details**: [Magento Extension: Auto Currency Switcher](http://blog.chapagain.com.np/magento-extension-auto-currency-switcher-free/)
+**More details**: [Magento Extension: Auto Currency Switcher BLOG](http://blog.chapagain.com.np/magento-extension-auto-currency-switcher-free/)
+
+## Updating GeoIP Databases ##
+
+The GeoIP database should be updated from time to time in order to make this extension work accurately. In this extension, you have option to choose from two databases (Webnet77's ip2country database & MaxMind's GeoIP database). Here are the ways to update these databases for this extension:
+
+**Updating Webnet77's Database**
+
+1) Download [IPV4 CSV](http://software77.net/geo-ip/) file
+
+2) Extract the file. This will extract IPtoCountry.csv file.
+
+3) Use [Ip2Country lookup classes for PHP](https://github.com/mgefvert/Ip2Country) to create binary-optimized version of the csv file.
+
+4) Upload the binary file (**.dat** file) to your **[Magento Folder]/var/geoip/ip2country/** folder.
+
+**Updating MaxMind GeoIP Database**
+
+1) Download [GeoIP Database](http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz) and [GeoIPv6 Database](http://geolite.maxmind.com/download/geoip/database/GeoIPv6.dat.gz)
+
+2) Extract both **.gz** files
+
+3) Upload them to your **[Magento Folder]/var/geoip/** folder
 
 ## Thanks ##
 
