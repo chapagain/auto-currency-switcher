@@ -43,15 +43,15 @@ The GeoIP database should be updated from time to time in order to make this ext
 
 3) Use [Ip2Country lookup classes for PHP](https://github.com/mgefvert/Ip2Country) to create binary-optimized version of the csv file.
 
-4) Upload the binary file (**.dat** file) to your **[Magento Folder]/var/geoip/ip2country/** folder.
+4) Upload the binary file (`.dat` file) to your `[Magento Folder]/var/geoip/ip2country/` folder.
 
 **Updating MaxMind GeoIP Database**
 
 1) Download [GeoIP Database](http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz) and [GeoIPv6 Database](http://geolite.maxmind.com/download/geoip/database/GeoIPv6.dat.gz)
 
-2) Extract both **.gz** files
+2) Extract both `.gz` files
 
-3) Upload them to your **[Magento Folder]/var/geoip/** folder
+3) Upload them to your `[Magento Folder]/var/geoip/` folder
 
 ## Thanks ##
 
