@@ -1,0 +1,3 @@
+app/etc/modules/Chapagain_AutoCurrency.xml app/etc/modules/Chapagain_AutoCurrency.xml
+app/code/community/Chapagain/AutoCurrency/* app/code/community/Chapagain/AutoCurrency/
+var/geoip/* var/geoip/
