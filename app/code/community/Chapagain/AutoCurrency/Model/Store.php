@@ -87,28 +87,28 @@ class Chapagain_AutoCurrency_Model_Store extends Mage_Core_Model_Store
      */
 	public function getCurrencyCodeMaxMind()
 	{
-		// include geoip.inc file
-		Mage::helper('autocurrency')->loadGeoIpInc();
-		
-		// get IP Address
-		$ipAddress = Mage::helper('autocurrency')->getIpAddress();
-		
-		// load GeoIP .dat binary file
-		if (Mage::helper('autocurrency')->checkIpv6($ipAddress)) {
-			$geoIp = Mage::helper('autocurrency')->loadGeoIpv6();
-		} else { 
-			$geoIp = Mage::helper('autocurrency')->loadGeoIpv4();
-		}	
-		
-		// get country code from ip address
-		$countryCode = geoip_country_code_by_addr($geoIp, $ipAddress);
-				
+
+        $ipAddress = Mage::helper('autocurrency')->getIpAddress();
+
+        $reader = new \GeoIp2\Database\Reader(BP . '/var/geoip/GeoLite2-Country.mmdb');
+
+        try{
+            $countryCode = $reader->country($ipAddress);
+            $countryCode = $countryCode->country->isoCode;
+        }catch (Exception $e){
+            return;
+        }
+
+        if(!$countryCode ){
+            return;
+        }
+
 		// get currency code from country code
 		//$currencyCode = geoip_currency_code_by_country_code($geoIp, $countryCode);
 		$currencyCode = Mage::helper('autocurrency')->getCurrencyByCountry($countryCode);
 		
 		// close the geo database  
-		geoip_close($geoIp);	
+//		geoip_close($geoIp);
 		
 		return $currencyCode;
 	}
