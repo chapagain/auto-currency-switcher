@@ -88,8 +88,35 @@ class Chapagain_AutoCurrency_Model_Store extends Mage_Core_Model_Store
 	public function getCurrencyCodeMaxMind()
 	{
 
+
+        $countryCode = $this->getCountryCodeByIp();
+
+		// get currency code from country code
+		$currencyCode = Mage::helper('autocurrency')->getCurrencyByCountry($countryCode);
+		
+
+		return $currencyCode;
+	}
+
+	public function getCountryCodeByIp()
+    {
         $ipAddress = Mage::helper('autocurrency')->getIpAddress();
 
+        $useMaxMind = !isset($_SERVER['HTTP_CF_IPCOUNTRY']);
+        if (Mage::registry('using_fake_ip')) { //this would come from Magenteiro_Cloudflare
+           $useMaxMind = true;
+        }
+
+        if ($useMaxMind) {
+            return $this->getCountryCodeFromMaxMind($ipAddress);
+        }
+
+        return $_SERVER['HTTP_CF_IPCOUNTRY'];
+
+    }
+
+    public function getCountryCodeFromMaxMind($ipAddress)
+    {
         $reader = new \GeoIp2\Database\Reader(BP . '/var/geoip/GeoLite2-Country.mmdb');
 
         try{
@@ -102,14 +129,6 @@ class Chapagain_AutoCurrency_Model_Store extends Mage_Core_Model_Store
         if(!$countryCode ){
             return;
         }
-
-		// get currency code from country code
-		//$currencyCode = geoip_currency_code_by_country_code($geoIp, $countryCode);
-		$currencyCode = Mage::helper('autocurrency')->getCurrencyByCountry($countryCode);
-		
-		// close the geo database  
-//		geoip_close($geoIp);
-		
-		return $currencyCode;
-	}
+        return $countryCode;
+    }
 }
