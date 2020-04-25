@@ -87,29 +87,48 @@ class Chapagain_AutoCurrency_Model_Store extends Mage_Core_Model_Store
      */
 	public function getCurrencyCodeMaxMind()
 	{
-		// include geoip.inc file
-		Mage::helper('autocurrency')->loadGeoIpInc();
-		
-		// get IP Address
-		$ipAddress = Mage::helper('autocurrency')->getIpAddress();
-		
-		// load GeoIP .dat binary file
-		if (Mage::helper('autocurrency')->checkIpv6($ipAddress)) {
-			$geoIp = Mage::helper('autocurrency')->loadGeoIpv6();
-		} else { 
-			$geoIp = Mage::helper('autocurrency')->loadGeoIpv4();
-		}	
-		
-		// get country code from ip address
-		$countryCode = geoip_country_code_by_addr($geoIp, $ipAddress);
-				
+
+
+        $countryCode = $this->getCountryCodeByIp();
+
 		// get currency code from country code
-		//$currencyCode = geoip_currency_code_by_country_code($geoIp, $countryCode);
 		$currencyCode = Mage::helper('autocurrency')->getCurrencyByCountry($countryCode);
 		
-		// close the geo database  
-		geoip_close($geoIp);	
-		
+
 		return $currencyCode;
 	}
+
+	public function getCountryCodeByIp()
+    {
+        $ipAddress = Mage::helper('autocurrency')->getIpAddress();
+
+        $useMaxMind = !isset($_SERVER['HTTP_CF_IPCOUNTRY']);
+        if (Mage::registry('using_fake_ip')) { //this would come from Magenteiro_Cloudflare
+           $useMaxMind = true;
+        }
+
+        if ($useMaxMind) {
+            return $this->getCountryCodeFromMaxMind($ipAddress);
+        }
+
+        return $_SERVER['HTTP_CF_IPCOUNTRY'];
+
+    }
+
+    public function getCountryCodeFromMaxMind($ipAddress)
+    {
+        $reader = new \GeoIp2\Database\Reader(BP . '/var/geoip/GeoLite2-Country.mmdb');
+
+        try{
+            $countryCode = $reader->country($ipAddress);
+            $countryCode = $countryCode->country->isoCode;
+        }catch (Exception $e){
+            return;
+        }
+
+        if(!$countryCode ){
+            return;
+        }
+        return $countryCode;
+    }
 }
